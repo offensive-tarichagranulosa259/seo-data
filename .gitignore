@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.DS_Store
+
+# Claude Code local session state (labbook, experiment logs).
+# This may contain transcripts of working sessions and should never be pushed.
+.claude/
+
+# In case anyone clones into a directory that already has a user-config dir
+# (it normally lives in $HOME, not the repo, but be paranoid)
+.seo-data/
+
+# Service account JSONs, OAuth client downloads, exported tokens — anything
+# matching these patterns is almost certainly a credential.
+*service-account*.json
+*service_account*.json
+client_secret*.json
+*-credentials.json
+*-creds.json
+google_client.json
+tokens.json
